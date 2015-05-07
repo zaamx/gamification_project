@@ -1,4 +1,5 @@
 ActiveAdmin.register Registro do
+  permit_params :nombre, :telefono, :apellido_materno, :apellido_paterno
 
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
