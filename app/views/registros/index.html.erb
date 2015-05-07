@@ -1,33 +1,42 @@
-<h1>Listing registros</h1>
-
-<table>
+<%- model_class = Registro -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => Registro %></h1>
+</div>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Nombre</th>
-      <th>Telefono</th>
-      <th>Apellido materno</th>
-      <th>Apellido paterno</th>
-      <th>User</th>
-      <th colspan="3"></th>
+      <th>ID</th>
+      <th><%= model_class.human_attribute_name(:nombre) %></th>
+      <th><%= model_class.human_attribute_name(:telefono) %></th>
+      <th><%= model_class.human_attribute_name(:apellido_materno) %></th>
+      <th><%= model_class.human_attribute_name(:apellido_paterno) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
-
   <tbody>
     <% @registros.each do |registro| %>
       <tr>
+        <td><%= registro.id %></td>
         <td><%= registro.nombre %></td>
         <td><%= registro.telefono %></td>
         <td><%= registro.apellido_materno %></td>
         <td><%= registro.apellido_paterno %></td>
-        <td><%= registro.user %></td>
-        <td><%= link_to 'Show', registro %></td>
-        <td><%= link_to 'Edit', edit_registro_path(registro) %></td>
-        <td><%= link_to 'Destroy', registro, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%=l registro.created_at, format: :long %></td>
+        <td>
+          <%= link_to registro_path(registro), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
+            <%= glyph 'info-sign' %>
+            <%= glyph 'pencil' %>
+          <%- end -%>
+          <%= link_to registro_path(registro), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
+            <%= glyph 'remove' %>
+          <%- end -%>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Registro', new_registro_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_registro_path,
+            :class => 'btn btn-primary' %>

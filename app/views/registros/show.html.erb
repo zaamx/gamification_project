@@ -1,29 +1,30 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Registro -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => Registro %></h1>
+</div>
 
-<p>
-  <strong>Nombre:</strong>
-  <%= @registro.nombre %>
-</p>
+<div class="fieldset">
+  <dl>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:nombre) %></dt>
+      <dd><pre class="prettyprint"><%= @registro.nombre %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:telefono) %></dt>
+      <dd><pre class="prettyprint"><%= @registro.telefono %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:apellido_materno) %></dt>
+      <dd><pre class="prettyprint"><%= @registro.apellido_materno %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:apellido_paterno) %></dt>
+      <dd><pre class="prettyprint"><%= @registro.apellido_paterno %></pre></dd>
+  </dl>
+</div>
 
-<p>
-  <strong>Telefono:</strong>
-  <%= @registro.telefono %>
-</p>
+<div class="form-group">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              registros_path, :class => 'btn btn-default'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_registro_path(@registro), :class => 'btn btn-default' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              registro_path(@registro),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>
 
-<p>
-  <strong>Apellido materno:</strong>
-  <%= @registro.apellido_materno %>
-</p>
-
-<p>
-  <strong>Apellido paterno:</strong>
-  <%= @registro.apellido_paterno %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @registro.user %>
-</p>
-
-<%= link_to 'Edit', edit_registro_path(@registro) %> |
-<%= link_to 'Back', registros_path %>
