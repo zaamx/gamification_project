@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @registro.nombre %>
+</p>
+
+<p>
+  <strong>Telefono:</strong>
+  <%= @registro.telefono %>
+</p>
+
+<p>
+  <strong>Apellido materno:</strong>
+  <%= @registro.apellido_materno %>
+</p>
+
+<p>
+  <strong>Apellido paterno:</strong>
+  <%= @registro.apellido_paterno %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @registro.user %>
+</p>
+
+<%= link_to 'Edit', edit_registro_path(@registro) %> |
+<%= link_to 'Back', registros_path %>

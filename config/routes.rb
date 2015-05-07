@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :registros
+
   resources :states
 
   resources :orders
